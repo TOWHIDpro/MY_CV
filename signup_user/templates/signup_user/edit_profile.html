@@ -1,0 +1,48 @@
+{% extends 'core/core.html' %}
+{% load static %}
+
+<!-- Style -->
+{% block style %}
+<link href="{% static 'signup_user/css/style.css' %}" rel="stylesheet">
+{% endblock style %}
+
+<!-- Tytle -->
+{% block title %}
+<title>Edit</title>
+{% endblock title %}
+
+<!-- Body -->
+{% block content %}
+ <form action="" method="POST" novalidate enctype="multipart/form-data">
+    {% csrf_token %}
+		<div class="form-box">
+			<div class="header-text">
+				{{request.user.username}}
+			</div>
+
+			<!-- non_field_errors -->
+			{% if form.non_field_errors %}
+        		{% for error in form.non_field_errors %}
+        		{{ error }} <br>
+        		{% endfor %}
+    		{% endif %}
+			
+			<!-- Form -->
+			{% for field in form %}
+        	{{ field.errors }}
+        	{{ field }} <br> <br>
+    		{% endfor %}
+
+
+			{% if request.GET.next %}
+				<input type="hidden" name="next" value="{{request.GET.next}}">
+			{% endif %}
+			
+			<button type="submit">Save</button>
+			<a href="{% url 'enroll:profile' %}" class="btn btn-outline-success">Back</a>
+			<a href="{% url 'index' %}" class="btn btn-outline-warning">Home</a>
+		</div>
+ </form>
+ 		
+
+{% endblock content %}

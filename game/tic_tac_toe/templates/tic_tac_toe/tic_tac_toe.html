@@ -1,0 +1,81 @@
+{% extends 'core/core.html' %}
+{% load static %}
+
+{% block title %}<title>Tic-Tac-Toe</title>{% endblock title %}
+
+
+{% block style %}
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'tic_tac_toe/css/master.css' %}" type="text/css">
+{% endblock style %}
+
+
+{% block content %}
+  <div>
+    <h1 class="header">Tic-Tac-Toe</h1>
+  </div>
+  <div class="enter-players">
+
+    <form id="player-form">
+      <div class="player-container">
+        <label for="player1"></label>
+        <input type="text" placeholder="Player 1 Name" name="player1" id="player1" class="input-field form-control" />
+      </div>
+      <div class="player-container">
+        <label for="player2"></label>
+        <input type="text" placeholder="Player 1 Name" name="player2" id="player2" class="input-field form-control" />
+      </div>
+
+      <input type="submit" class="submit-btn" value="Start Game" />
+    </form>
+  </div>
+
+  <div class="board__main hide-container">
+    <div class="board___player-turn"></div>
+
+    <div class="board__container">
+      <div class="board__cell">
+        <div class="letter" data-id="0"></div>
+      </div>
+      <div class="board__cell">
+        <div class="letter" data-id="1"></div>
+      </div>
+      <div class="board__cell">
+        <div class="letter" data-id="2"></div>
+      </div>
+
+      <div class="board__cell">
+        <div class="letter" data-id="3"></div>
+      </div>
+      <div class="board__cell">
+        <div class="letter" data-id="4"></div>
+      </div>
+      <div class="board__cell">
+        <div class="letter" data-id="5"></div>
+      </div>
+
+      <div class="board__cell">
+        <div class="letter" data-id="6"></div>
+      </div>
+      <div class="board__cell">
+        <div class="letter" data-id="7"></div>
+      </div>
+      <div class="board__cell">
+        <div class="letter" data-id="8"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reset reset--hidden">
+    <div class="reset__text">
+    </div>
+    <button class="replay-btn" value="replay">
+      <span class="clear-board">Clear Board</span>
+    </button>
+     <a href="/" class="btn btn-outline-danger">Home</a>
+  </div>
+{% endblock content %}
+
+{% block script %}
+  <script type="text/javascript" src="{% static 'tic_tac_toe/js/main.js' %}"></script>
+{% endblock script %}

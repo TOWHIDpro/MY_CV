@@ -1,0 +1,54 @@
+{% extends 'core/core.html' %}
+{% load static %}
+
+<!-- Style -->
+{% block style %}
+<link href="{% static 'signup_user/css/style.css' %}" rel="stylesheet">
+{% endblock style %}
+
+<!-- Tytle -->
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block content %}
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+
+	<!-- Form -->
+	<div class="form-box">
+		<div class="header-text">
+			Login
+		</div>
+
+		<!-- non field error -->
+		{% if form.non_field_errors %}
+			{% for error in form.non_field_errors %}
+			{{ error }} <br>
+			{% endfor %}
+		{% endif %}
+
+		{% for field in form %}
+        	{{ field.errors }}
+        	{{ field }} <br> <br>
+    	{% endfor %}
+
+		{% if request.GET.next %}
+			<input type="hidden" name="next" value="{{request.GET.next}}">
+		{% endif %}
+
+    	<button type="submit">Login</button>
+		<a href="{% url 'enroll:signup_user' %}?next={{request.GET.next}}" class="btn btn-outline-danger">Signup</a>
+		<a href="{% url 'index' %}" class="btn btn-outline-warning">Home</a>
+	</div>
+</form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+{% endblock content %}

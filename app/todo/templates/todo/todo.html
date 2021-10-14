@@ -1,0 +1,61 @@
+{% extends 'core/core.html' %}
+{% load static %}
+
+{% block top %}<h2 class="text-center alert alert-danger">Todo app</h2>{% endblock top %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-3"> <br>
+            <h4 class="text-center alert alert-info">Add Task</h4>
+            <form action="" method="GET" novalidate>
+                {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }} <br>
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %} <br>
+                <button type="submit" class="btn btn-success">Add</button>
+                <a href="/" class="btn btn-warning">Home</a>
+            </form>
+            
+        </div>
+        <div class="col-sm-9"> <br>
+            <h4 class="text-center alert alert-info">{{user}}</h4>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Action</th>
+
+                  </tr>
+                </thead>
+                </b>
+                
+                <tbody> 
+                  {% for data in datas %}
+                    <tr>
+                      <td scope="row">{{data.id}}</td>
+
+                      <td>
+                        {% if data.important %}<b>{% endif %}
+                          {% if data.discreption %}<a href="{% url 'details' data.id %}">{% endif %}
+                            {{data.title}}
+                          {% if data.discreption %}</a>{% endif %}
+                        {% if data.important %}<b>{% endif %}
+                      </td>
+
+                      <td>{{data.created|date:'Y-m-d H:i'}}</td>
+                      <td><a href="{% url 'delete_tasks' data.id %}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+        
+    </div>
+{% endblock content %}

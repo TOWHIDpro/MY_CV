@@ -1,0 +1,35 @@
+{% extends 'core/core.html' %}
+
+{% block top %}<h2 class="text-center alert alert-danger">Password Generator</h2>{% endblock top %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6"> <br>
+        <h4 class="text-center alert alert-info">Password Type</h4>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+        <div class="fieldWrapper">
+            <!-- {{ field.errors }} -->
+            {{ field.label_tag }} <br> {{ field }} 
+            
+            <!-- <br> -->
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-success">Generate</button>
+        <a href="/" class="btn btn-warning">Home</a>
+        </form>
+        
+    </div>
+    <div class="col-sm-6"> <br>
+        <h4 class="text-center alert alert-success">{{password}}</h4>
+    </div>
+</div>
+    
+
+    
+{% endblock content %}

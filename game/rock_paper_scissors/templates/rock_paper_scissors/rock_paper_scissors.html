@@ -1,0 +1,25 @@
+{% extends 'core/core.html' %}
+{% load static %}
+
+{% block title %}<title>R-P-S</title>{% endblock title %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'rock_paper_scissors/css/style.css' %}">{% endblock style %}
+
+
+
+{% block content %}
+<div>
+    <h2 class="text-center alert alert-danger">R-P-S</h2>
+    <div class="flex-box-rps row" id="flex-box-rps-div">
+        <img src="{% static 'rock_paper_scissors/images/rock.jpg' %}" class="col-4" id="rock">
+        <img src="{% static 'rock_paper_scissors/images/paper.jpg' %}" class="col-4" id="paper">
+        <img src="{% static 'rock_paper_scissors/images/scissors.jpg' %}" class="col-4" id="scissors">
+    </div>
+    <button class="btn btn-outline-secondary my-3" onClick="history.go(0);">Clear Board</button>
+    <a href="/" class="btn btn-outline-danger my-3">Home</a>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'rock_paper_scissors/js/rock_paper_sizer.js' %}"></script>
+{% endblock script %}

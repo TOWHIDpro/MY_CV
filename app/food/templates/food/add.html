@@ -1,0 +1,30 @@
+{% extends 'core/core.html' %}
+{% load static %}
+{% block style %}{% endblock style %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+    <h2 class="text-center mt-3 alert alert-primary container">Add Item</h2>
+    <form action="" method="POST" class="container">
+            {% csrf_token %}
+            {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }} <br>
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-warning">Add</button>
+        <a href="{% url 'food:index' %}" class="btn btn-danger">Back</a>
+    </form>
+
+    
+{% endblock content %}
+
+        
+{% block script %}{% endblock script %}
+
+
