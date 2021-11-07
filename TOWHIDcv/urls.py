@@ -24,6 +24,9 @@ urlpatterns = [
     path('ecommerce/', include('web.ecommerce.urls')),
     path('blog/', include('web.blog.urls')),
 
+    # local
+    path('education/', include('education.urls')),
+
     # Extra
     path('froala_editor/',include('froala_editor.urls'))
 ]

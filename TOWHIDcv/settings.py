@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     # web section
     'web.photo_gallery',
     'web.ecommerce',
-    'web.blog'
+    'web.blog',
+
+    # local
+    'education',
     
 ]
 
