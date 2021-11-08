@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'index.apps.IndexConfig',
     'core',
     'signup_user',
+    'django_social_share',
 
     # app section
     'app.crud',

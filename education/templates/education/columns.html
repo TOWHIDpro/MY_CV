@@ -1,5 +1,8 @@
 {% extends 'education/base.html' %}
 {% load static %}
+{% load social_share %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'education/css/style.css' %}">  {% endblock link %}
 
 {% block body %}
     <body id="top" class="page-2">
@@ -15,20 +18,23 @@
                         <li class="nav-item">
                             <a href="{% url 'education:index' %}" class="nav-link external">Home</a>
                         </li>
-                        {% comment %} <li class="nav-item">
-                            <a href="#top" class="nav-link">One Column</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#tm-section-3" class="nav-link">Two Column</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#tm-section-4" class="nav-link">Three Column</a>
-                        </li> {% endcomment %}
                     </ul>
                 </div>
             </nav>
-
         </div>
+
+        <div class="terb">
+            {% post_to_facebook object_or_url " " "fa fa-facebook" %}
+    
+            {% post_to_twitter "{{sub_data.small_disc|safe}}" object_or_url " " "fa fa-twitter" %}
+
+            {% post_to_linkedin object_or_url "fab fa-linkedin-in" %}
+
+            {% post_to_whatsapp object_or_url " " "fa fa-whatsapp" %}
+
+            {% post_to_telegram "{{sub_data.small_disc|safe}}" object_or_url " " "fa fa-paper-plane" %}
+        </div>
+
     
         <div class="container-fluid">
 
@@ -49,266 +55,21 @@
                         
                         <div class="tm-flex-center">
                           <a href="{% url 'education:index' %}" class="btn btn-default btn-lg tm-gray-btn">Home</a>
+                          
                         </div>
                     </div>
                 </div>
             </div>
-      
-            {% comment %} <div class="row">
-                <div class="tm-section" id="tm-section-3">
-                    
-                    <div class="col-md-6 margin-bottom-sm-8">  
-                        <div class="tm-2-col-box-left">
-                            <img src="img/tm-700x350-01.jpg" alt="Image" class="img-fluid tm-img-2-col">
-                        
-                            <p class="text-left tm-description">
-                                Proin auctor tortor quis ipsum dignissim, quis congue tortor scelerisque.
-                                Etiam malesuada efficitur elit, ut pellentesque mi pellentesque ut.
-                            </p>
-                            <p class="text-left tm-description">
-                                Nullam tincidunt vehicula turpis at porttitor. Sed bibendum odio non maximus
-                                suscipit. Pellentesque consectetur orci id rutrum lacinia.
-                            </p>   
-                        </div> 
-                    </div>  
 
-                    <div class="col-md-6">
-                        <div>
-                            <img src="img/tm-700x350-02.jpg" alt="Image" class="img-fluid tm-img-2-col">
-                   
-                            <table class="table table-striped">
-                                <tbody>
-                                    <tr>
-                                        <td>Aliquam in nibh elementum</td>
-                                        <td>$100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Donec porta augue vitae egestas</td>
-                                        <td>$200</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nunc lacinia vehicula ipsum</td>
-                                        <td>$300</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Porttitor rhoncus vel vitae libero</td>
-                                        <td>$400</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nulla neque ligula, bibendum vitae</td>
-                                        <td>$500</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>                
-            </div> {% endcomment %}
-      
-            {% comment %} <div class="row">
-                <div class="tm-section" id="tm-section-4">
-                    <div class="col-md-4 margin-bottom-sm-3">
-                        <div class="tm-3-col-box">
-                            <img src="img/tm-500x250-01.jpg" alt="Image" class="img-fluid">
-                        
-                            <div class="tm-description-box">
-                                <p class="tm-description-text">
-                                    Proin auctor tortor quis ipsum dignissim, quis congue tortor scelerisque.
-                                    Etiam malesuada efficitur elit, ut pellentesque mi pellentesque ut.
-                                </p>
-                                
-                                <div class="tm-flex-center">
-                                    <a href="#" class="btn btn-default tm-normal-btn tm-blue-btn">Read</a>
-                                    <a href="#" class="btn btn-default tm-normal-btn tm-blue-bordered-btn">Read</a>    
-                                </div>
-                                    
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="col-md-4 margin-bottom-sm-3">
 
-                        <div class="tm-3-col-box">
-                            <img src="img/tm-500x250-02.jpg" alt="Image" class="img-fluid">
-                        
-                            <div class="tm-description-box">
-                                <p class="tm-description-text">
-                                    Proin auctor tortor quis ipsum dignissim, quis congue tortor scelerisque.
-                                    Etiam malesuada efficitur elit, ut pellentesque mi pellentesque ut.
-                                </p>
-                                
-                                <div class="tm-flex-center">
-                                    <a href="#" class="btn btn-default tm-normal-btn tm-gray-btn">Read</a>
-                                    <a href="#" class="btn btn-default tm-normal-btn tm-gray-bordered-btn">Read</a>    
-                                </div>
-                                    
-                            </div>
-                        </div>                                                
-                    </div>
-                
-                    <div class="col-md-4">
-                        <div class="tm-3-col-box">
-                            <img src="img/tm-500x250-03.jpg" alt="Image" class="img-fluid">
-                        
-                            <div class="tm-description-box">
-                                <p class="tm-description-text">
-                                    Proin auctor tortor quis ipsum dignissim, quis congue tortor scelerisque.
-                                    Etiam malesuada efficitur elit, ut pellentesque mi pellentesque ut.
-                                </p>
-                                
-                                <div class="tm-flex-center">
-                                    <a href="#" class="btn btn-default tm-normal-btn tm-green-btn">Read</a>
-                                    <a href="#" class="btn btn-default tm-normal-btn tm-green-bordered-btn">Read</a>    
-                                </div>
-                                    
-                            </div>
-                        </div>                        
-                        
-                    </div>
-                </div>        
-            </div> {% endcomment %}
-        
-            {% comment %} <div class="row">
-                <div class="tm-section" id="tm-section-5">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <h3 class="blue-text">Full-width large table</h3>
-              
-                        <table class="table table-striped tm-full-width-large-table">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Row 1</td>
-                                    <td>In consectetur et dolor eget mollis</td>
-                                    <td>First</td>
-                                    <td>$1,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 2</td>
-                                    <td>Donec porta augue vitae egestas eleifend</td>
-                                    <td>First</td>
-                                    <td>$1,500</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 3</td>
-                                    <td>Aliquam in nibh elementum</td>
-                                    <td>Second</td>
-                                    <td>$2,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 4</td>
-                                    <td>Donec porta augue vitae egestas</td>
-                                    <td>Second</td>
-                                    <td>$2,500</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 5</td>
-                                    <td>Nunc lacinia vehicula upsum</td>
-                                    <td>Second</td>
-                                    <td>$3,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 6</td>
-                                    <td>Porttitor rhoncus vel vitae libero</td>
-                                    <td>Third</td>
-                                    <td>$3,500</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 7</td>
-                                    <td>Nulla neque ligula, bibendum vitae</td>
-                                    <td>Third</td>
-                                    <td>$4,000</td>
-                                </tr>
-                            </tbody>        
-                        </table>
-                    </div>
-                </div> <!-- tm-section -->        
-            </div> {% endcomment %}
+            
+            <br><br>
       
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <p class="text-xs-center tm-footer-text">Copyright &copy; 2016 Company Name</p>
                 </div>
             </div>
-        </div> <!-- .container -->
-
-        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
-        <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h --> 
-        <script src="js/bootstrap.min.js"></script>                 <!-- Bootstrap (http://v4-alpha.getbootstrap.com/) -->
-        <script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->           
-   
+        </div>
     </body>
 {% endblock body %}
-
-
-{% block scripts %}
-<!-- Templatemo scripts -->
-<script>     
- 
-    $(document).ready(function(){
-        var mobileTopOffset = 54;
-        var tabletTopOffset = 74;
-        var desktopTopOffset = 79;
-        var topOffset = desktopTopOffset;
-        if($(window).width() <= 767) {
-            topOffset = mobileTopOffset;
-        }
-        else if($(window).width() <= 991) {
-            topOffset = tabletTopOffset;
-        }
-      
-        /* Single page nav
-        -----------------------------------------*/
-        $('#tmNavbar').singlePageNav({
-            'currentClass' : "active",
-            offset : topOffset,
-            'filter': ':not(.external)'
-        }); 
-        if($(window).width() < 570) {
-            $('.tm-full-width-large-table').addClass('table-responsive');
-        }
-        else {
-            $('.tm-full-width-large-table').removeClass('table-responsive');   
-        }
-      
-        /* Collapse menu after click 
-        -----------------------------------------*/
-        $('#tmNavbar a').click(function(){
-            $('#tmNavbar').collapse('hide');
-        });
-      
-        /* Handle nav offset & table responsive upon window resize
-        --------------------------------------------------------------*/
-        $(window).resize(function(){
-            
-            if($(window).width() < 768) {
-                topOffset = mobileTopOffset;
-            } 
-            else if($(window).width() <= 991) {
-                topOffset = tabletTopOffset;
-            }
-            else {
-                topOffset = desktopTopOffset;
-            }
-            $('#tmNavbar').singlePageNav({
-                'currentClass' : "active",
-                offset : topOffset,
-                'filter': ':not(.external)'
-            });
-            if($(window).width() < 570) {
-                $('.tm-full-width-large-table').addClass('table-responsive');
-            }
-            else {
-                $('.tm-full-width-large-table').removeClass('table-responsive');   
-            }
-        });
-                  
-    });
-</script> 
-{% endblock scripts %}
