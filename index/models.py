@@ -1,9 +1,14 @@
 from django.db import models
-from django.db.models import aggregates
-from django.db.models.fields import URLField
-from froala_editor.fields import FroalaField
+import re
+from ckeditor.fields import RichTextField
 
 # Create your models here.
+
+# Remove HTML tags and return clean string text
+CLEANR = re.compile('<.*?>') 
+def cleanhtml(raw_html):
+  cleantext = re.sub(CLEANR, '', raw_html)
+  return cleantext
 
 class A_Home(models.Model):
     profile_img   = models.ImageField(upload_to='images/', help_text='Make sure the img is: 600x600')
@@ -23,10 +28,10 @@ class A_Links(models.Model):
         return self.name
 
 class B_About(models.Model):
-    about         = models.TextField(max_length=250)
+    about         = RichTextField()
     img           = models.ImageField(upload_to='B_About/')
     text_bold     = models.TextField(max_length=100)
-    text_small    = models.TextField(max_length=250, blank=True)
+    text_small    = RichTextField()
     birthday      = models.DateField()
     website       = models.URLField()
     phone         = models.IntegerField()
@@ -35,15 +40,15 @@ class B_About(models.Model):
     degree        = models.CharField(max_length=15)
     email         = models.EmailField()
     freelancer    = models.BooleanField()
-    botom_text    = models.TextField(max_length=250, blank=True)
+    botom_text    = RichTextField(blank=True)
 
     def __str__(self):
-        return self.about
+        return cleanhtml(self.about)
 
 class C_Skil_text(models.Model):
-    text           = models.TextField(max_length=500)
+    text           = RichTextField()
     def __str__(self):
-        return self.text
+        return cleanhtml(self.text)
 
 class D_Skil(models.Model):
     name           = models.CharField(max_length=20)
@@ -52,38 +57,40 @@ class D_Skil(models.Model):
         return self.name
 
 class E_resume_text(models.Model):
-    text_resume    = models.TextField(max_length=500)
-    text_summary   = models.TextField(max_length=500)
+    text_resume    = RichTextField(blank=True)
+    text_summary   = RichTextField(blank=True)
+    def __str__(self):
+        return f"{cleanhtml(self.text_resume[0:60])} | {cleanhtml(self.text_summary[0:60])}"
 
 class F_Summary(models.Model):
-    text           = models.TextField(max_length=500)
+    text           = RichTextField()
     def __str__(self):
-        return self.text
+        return cleanhtml(self.text[0:80])
 
 class G_Education(models.Model):
     bold_text1     = models.CharField(max_length=100)
     session1       = models.CharField(max_length=10)
-    text1          = models.TextField(max_length=200, blank=True)
-    text2          = models.TextField(max_length=200, blank=True)
+    text1          = RichTextField(blank=True)
+    text2          = RichTextField(blank=True)
     def __str__(self):
         return self.bold_text1
 
 class H_Services_text(models.Model):
-    text = FroalaField()
-    # def __str__(self):
-    #     return self.text
+    text = RichTextField()
+    def __str__(self):
+        return cleanhtml(self.text[0:80])
 
 class I_Services(models.Model):
     icon           = models.CharField(max_length=50, help_text='Put bootstrap icon like this: bi bi-briefcase-fill')
-    sub            = models.CharField(max_length=50)
-    text           = models.TextField(max_length=200)
+    sub            = RichTextField(blank=True)
+    text           = RichTextField(blank=True)
     def __str__(self):
-        return self.sub
+        return cleanhtml(self.sub)
 
 class J_Portfolio_text(models.Model):
-    text           = models.TextField(max_length=500)
+    text           = RichTextField(blank=True)
     def __str__(self):
-        return self.text
+        return cleanhtml(self.text)
 
 class K_Portfolio(models.Model):
     CHOICES = (

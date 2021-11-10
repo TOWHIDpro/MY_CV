@@ -1,5 +1,5 @@
 from django.db import models
-from froala_editor.fields import FroalaField
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -7,7 +7,7 @@ from froala_editor.fields import FroalaField
 class AddImage(models.Model):
     title = models.CharField(max_length=100)
     image = models.CharField(max_length=500)
-    content = FroalaField()
+    content = RichTextField()
     slug = models.SlugField(unique=True, null=True, blank=True)
     created = models.DateField(auto_now_add=True)
     edited = models.DateField(auto_now=True)

@@ -1,6 +1,8 @@
 {% extends 'education/base.html' %}
 {% load static %}
 
+
+
 {% block body %}
     <body id="top" class="home">
        
@@ -48,7 +50,7 @@
                         <div class="tm-container text-xs-center tm-section-1-inner">
                             <img src="{% static 'education/img/python.png' %}" alt="Logo" class="tm-logo" height="200px">
                             <h1 class="tm-site-name" style="color: rgb(250, 3, 3);">START</h1>
-                            <p class="tm-intro-text" style="color: rgb(255, 251, 0);">PYTHON</p>
+                            <p class="tm-intro-text" style="color: rgb(255, 251, 0);">Your Favourite</p>
                             <a href="#tm-section-2" class="tm-intro-link">Courses</a>    
                         </div>                                               
                    </section>
@@ -68,7 +70,7 @@
                             </div>
                             
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-news-container">
-                                <h2 class="tm-news-title dark-gray-text">{{sub_dta.title}}</h2>
+                                <h2 class="tm-news-title dark-gray-text">{{sub_dta.title|upper}}</h2>
                                 <p class="tm-news-text">{{sub_dta.small_disc|safe}}</p>
                                 <a href="{% url 'education:details' sub_dta.slug %}" class="btn tm-light-blue-bordered-btn tm-news-link">Preview</a>
                             </div>
@@ -106,7 +108,7 @@
                 <!-- footer -->
                 <footer class="tm-footer">                
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <p class="text-xs-center tm-footer-text">Copyright &copy; 2016 Company Name</p>                    
+                        <p class="text-xs-center tm-footer-text">Copyright &copy; TOWHIDpro</p>                    
                     </div>                
                 </footer>  
 

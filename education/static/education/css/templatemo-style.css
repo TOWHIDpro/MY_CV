@@ -72,9 +72,9 @@ h3 { margin-bottom: 2.5rem; }
 button:focus { outline: none; }
 
 .tm-intro {
-	background: url(../img/programing.jpg) no-repeat;
+	background: url(../img/programing.png) no-repeat;
 	background-attachment: fixed;
-	background-position: left top;
+	background-position: center center;
 	background-size: 100% 750px;
 	color: white;
 	display: -webkit-flex;

@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'froala_editor',
+    'ckeditor',
     'index.apps.IndexConfig',
     'core',
     'signup_user',
@@ -147,6 +147,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

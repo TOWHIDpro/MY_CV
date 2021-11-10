@@ -4,7 +4,7 @@ from . models import Subject, Gallery, Middle_text
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
-    fields = ('title', 'small_disc', 'image_URL', 'disc')
+    fields = ( 'title', 'small_disc', 'image_URL', 'disc', 'site_title', )
     
 
 admin.site.register(Gallery)

@@ -4,7 +4,7 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>{{about.about}}</p>
+          <p>{{about.about|safe}}</p>
         </div>
 
         <div class="row">
@@ -14,7 +14,7 @@
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>{{about.text_bold}}</h3>
             <p class="fst-italic">
-              {{about.text_small}}
+              {{about.text_small|safe}}
             </p>
             <div class="row">
               <div class="col-lg-6">
@@ -37,7 +37,7 @@
               </div>
             </div>
             <p>
-              {{about.botom_text}}
+              {{about.botom_text|safe}}
             </p>
           </div>
         </div>

@@ -2,6 +2,10 @@
 {% load static %}
 {% load social_share %}
 
+{% block title %}
+    <title>{{sub_data.site_title}}</title>
+{% endblock title %}
+
 {% block link %}<link rel="stylesheet" href="{% static 'education/css/style.css' %}">  {% endblock link %}
 
 {% block body %}
@@ -41,7 +45,7 @@
             <div class="row">
               <div id="tm-section-1" class="tm-section">
                 <div class="col-md-12">
-                    <h1 class="text-xs-center blue-text tm-page-2-title">{{sub_data.title}}</h1>
+                    <h1 class="text-xs-center blue-text tm-page-2-title">{{sub_data.title|upper}}</h1>
                     <p class="text-xs-center tm-page-2-p tm-page-2-subtitle">{{sub_data.small_disc|safe}}</p>
                     <img src="{{sub_data.image_URL.url}}" class="img-fluid tm-banner-img" alt="Image">            
                 </div>
@@ -54,22 +58,29 @@
                         <p class="text-left tm-description">{{sub_data.disc|safe}}</p>
                         
                         <div class="tm-flex-center">
-                          <a href="{% url 'education:index' %}" class="btn btn-default btn-lg tm-gray-btn">Home</a>
+                          <a href="#" class="btn btn-default btn-lg tm-gray-btn back-btn">Back</a>
                           
                         </div>
                     </div>
                 </div>
             </div>
 
-
-            
             <br><br>
       
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p class="text-xs-center tm-footer-text">Copyright &copy; 2016 Company Name</p>
+                    <p class="text-xs-center tm-footer-text">Copyright &copy; TOWHIDpro</p>
                 </div>
             </div>
         </div>
     </body>
 {% endblock body %}
+
+{% block scripts %}
+<script>
+    document.querySelector('.back-btn').addEventListener('click', goBack)
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock scripts %}

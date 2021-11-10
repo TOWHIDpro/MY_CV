@@ -4,7 +4,7 @@
 
         <div class="section-title">
           <h2>Resume</h2>
-          <p>{{ resume.text_resume }}</p>
+          <p>{{ resume.text_resume|safe }}</p>
         </div>
 
         <div class="row">
@@ -12,10 +12,10 @@
             <h3 class="resume-title">Sumary</h3>
             <div class="resume-item pb-0">
               <h4>{{ home.name }}</h4>
-              <p><em>{{ resume.text_summary }}</em></p>
+              <p><em>{{ resume.text_summary|safe }}</em></p>
               <ul>
                 {% for summ in summary %}
-                <li>{{ summ.text }}</li>
+                <li>{{ summ.text|safe }}</li>
                 {% endfor %}
               </ul>
             </div>
@@ -25,8 +25,8 @@
             <div class="resume-item">
               <h4>{{ edu.bold_text1 }}</h4>
               <h5>{{ edu.session1 }}</h5>
-              <p><em>{{ edu.text1 }}</em></p>
-              <p>{{ edu.text2 }}</p>
+              <p><em>{{ edu.text1|safe }}</em></p>
+              <p>{{ edu.text2|safe }}</p>
             </div>
             {% endfor %}
             
