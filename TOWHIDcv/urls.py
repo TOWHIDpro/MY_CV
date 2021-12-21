@@ -11,7 +11,7 @@ urlpatterns = [
 
     # app section
     path('crud/', include('app.crud.urls')),
-    path('password_generator', include('app.pass_gen.urls')),
+    path('password_generator/', include('app.pass_gen.urls')),
     path('food-app', include('app.food.urls')),
     path('todo/', include('app.todo.urls')),
 

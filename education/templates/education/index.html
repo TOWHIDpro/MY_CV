@@ -71,7 +71,7 @@
                             
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-news-container">
                                 <h2 class="tm-news-title dark-gray-text">{{sub_dta.title|upper}}</h2>
-                                <p class="tm-news-text">{{sub_dta.small_disc|safe}}</p>
+                                <p class="tm-news-text">{{sub_dta.small_disc|safe|truncatechars:200}}</p>
                                 <a href="{% url 'education:details' sub_dta.slug %}" class="btn tm-light-blue-bordered-btn tm-news-link">Preview</a>
                             </div>
                         </div>
