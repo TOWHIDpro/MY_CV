@@ -10,7 +10,6 @@ urlpatterns = [
     path('enroll/', include('signup_user.urls')),
 
     # app section
-    path('crud/', include('app.crud.urls')),
     path('password_generator/', include('app.pass_gen.urls')),
     path('food-app', include('app.food.urls')),
     path('todo/', include('app.todo.urls')),
@@ -29,6 +28,10 @@ urlpatterns = [
 
     # Extra
     path('ckeditor/', include('ckeditor_uploader.urls')),
+
+    # app section -- api
+    # path('api-auth/', include('rest_framework.urls')),
+    path('api/todo/', include('app.todo.api.urls')),
 ]
 urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

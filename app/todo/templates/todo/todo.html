@@ -1,24 +1,28 @@
 {% extends 'core/core.html' %}
 {% load static %}
 
-{% block top %}<h2 class="text-center alert alert-danger">Todo app</h2>{% endblock top %}
+{% block top %}<h2 class="text-center alert alert-danger">Todo app Vue-js</h2>{% endblock top %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'todo/css/todo.css' %}">{% endblock style %}
 
 {% block content %}
+  <div class="todo-app">
     <div class="row">
         <div class="col-sm-3"> <br>
             <h4 class="text-center alert alert-info">Add Task</h4>
-            <form action="" method="GET" novalidate>
-                {% for field in form %}
-                <div class="fieldWrapper">
-                    {{ field.errors }}
-                    {{ field.label_tag }} {{ field }} <br>
-                    {% if field.help_text %}
-                    <p class="help">{{ field.help_text|safe }}</p>
-                    {% endif %}
-                </div>
-                {% endfor %} <br>
-                <button type="submit" class="btn btn-success">Add</button>
-                <a href="/" class="btn btn-warning">Home</a>
+            <form method="post" ref="todoform">
+              <label for="title">Title</label>
+              <input v-model="form.title" type="text" class="form-control" id="title">
+              <!--  -->
+              <label for="discreption">Discreption</label>
+              <textarea v-model="form.discreption" class="form-control" id="discreption" rows="5"></textarea>
+              <!--  -->
+              <input type="checkbox" name="checkbox" id="checkbox" v-model="form.important"><label for="checkbox"> Important </label>
+              <br><br>
+              <!--  -->
+              <input type="hidden" value="{{request.user.id}}" type="text" ref="userid">
+                <button @click.prevent="submitForm()" class="btn btn-success">Add</button>
+                <a href="/" class="btn btn-warning m-2">Home</a>
             </form>
             
         </div>
@@ -36,26 +40,25 @@
                 </thead>
                 </b>
                 
-                <tbody> 
-                  {% for data in datas %}
+                <tbody v-for="(item, index) in tasks" :key="item.id"> 
+                  <picker :details="details" :close="closedetails" :update="updatedetails"/>
                     <tr>
-                      <td scope="row">{{data.id}}</td>
-
-                      <td>
-                        {% if data.important %}<b>{% endif %}
-                          {% if data.discreption %}<a href="{% url 'details' data.id %}">{% endif %}
-                            {{data.title}}
-                          {% if data.discreption %}</a>{% endif %}
-                        {% if data.important %}<b>{% endif %}
+                      <td scope="row">[[index+1]]</td>
+                      <td  @click="showdetails(item.id)">
+                        <a :class="{important:item.important}">[[item.title]]</a>
                       </td>
-
-                      <td>{{data.created|date:'Y-m-d H:i'}}</td>
-                      <td><a href="{% url 'delete_tasks' data.id %}" class="btn btn-danger">Delete</a></td>
+                      <td>[[item.created]]</td>
+                      <td><a @click="dltbtn(item.id)" class="btn btn-danger">Delete</a></td>
                     </tr>
-                  {% endfor %}
                 </tbody>
               </table>
         </div>
-        
     </div>
+  </div>
 {% endblock content %}
+
+{% block script %}
+<script src="{% static 'todo/js/todo.js' %}"></script>
+<script src="{% static 'todo/js/details.js' %}"></script>
+<script>todoapp.mount('.todo-app')</script>
+{% endblock script %}

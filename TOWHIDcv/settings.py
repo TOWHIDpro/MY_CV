@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
+    'rest_framework',
     'ckeditor',
     'index.apps.IndexConfig',
     'core',
@@ -34,7 +36,6 @@ INSTALLED_APPS = [
     'django_social_share',
 
     # app section
-    'app.crud',
     'app.pass_gen',
     'app.food',
     'app.todo',
@@ -53,7 +54,18 @@ INSTALLED_APPS = [
     
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+    ],
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    # )
+}
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -151,6 +163,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 try:
     from . local_settings import *
